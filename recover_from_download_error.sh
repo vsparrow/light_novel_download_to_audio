@@ -25,8 +25,8 @@ while read -r link; do
 
     # some of the urls have 2 slashes after .com
     updated_link=$(sed "s/com\/\//com\//g" <<< $updated_link1)
-
-    curl $updated_link > ./$filename
+    # -L to follow redirection of URLs
+    curl -L $updated_link > ./$filename
 
     # Check to see if the file is of expected size
     # check filesize  c%s = output in bytes
